@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,5 +43,14 @@ public class ContactService {
     public void deleteContact(Contact contact) {
         // Assignment
         contactRepository.deleteById(contact.getId());
+    }
+
+    public String uploadPhoto(String id, MultipartFile file) {
+        log.info("Saving picture for user ID: {}", id);
+        Contact contact = getContact(id);
+        String photoUrl = photoFunction.apply(id, file);
+        contact.setPhotoUrl(photoUrl);
+        contactRepository.save(contact);
+        return photoUrl;
     }
 }
