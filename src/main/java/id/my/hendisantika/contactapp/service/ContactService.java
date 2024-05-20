@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : contact-app
@@ -53,4 +56,7 @@ public class ContactService {
         contactRepository.save(contact);
         return photoUrl;
     }
+
+    private final Function<String, String> fileExtension = filename -> Optional.of(filename).filter(name -> name.contains("."))
+            .map(name -> "." + name.substring(filename.lastIndexOf(".") + 1)).orElse(".png");
 }
