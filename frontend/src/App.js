@@ -31,4 +31,30 @@ function App() {
         setValues({...values, [event.target.name]: event.target.value});
     };
 
+    const handleNewContact = async (event) => {
+        event.preventDefault();
+        try {
+            const {data} = await saveContact(values);
+            const formData = new FormData();
+            formData.append('file', file, file.name);
+            formData.append('id', data.id);
+            const {data: photoUrl} = await udpatePhoto(formData);
+            toggleModal(false);
+            setFile(undefined);
+            fileRef.current.value = null;
+            setValues({
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                title: '',
+                status: '',
+            })
+            getAllContacts();
+        } catch (error) {
+            console.log(error);
+            toastError(error.message);
+        }
+    };
+
     export default App;
