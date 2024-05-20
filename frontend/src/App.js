@@ -1,12 +1,12 @@
-import './App.css';
-import {ToastContainer} from "react-toastify";
-import Header from "./components/Header";
-import {Navigate, Route, Routes} from "react-router-dom";
-import React, {useEffect, useRef, useState} from "react";
-import ContactList from "./components/ContactList";
-import ContactDetail from "./components/ContactDetail";
-import {toastError} from "./api/ToastService";
-import {getContacts, saveContact, updatePhoto} from "./api/ContactService";
+import {useEffect, useRef, useState} from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/Header'
+import ContactList from './components/ContactList'
+import {getContacts, saveContact, updatePhoto} from './api/ContactService';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import ContactDetail from './components/ContactDetail';
+import {toastError} from './api/ToastService';
+import {ToastContainer} from 'react-toastify';
 
 function App() {
     const modalRef = useRef();
@@ -158,4 +158,4 @@ function App() {
     );
 }
 
-    export default App;
+export default App;
