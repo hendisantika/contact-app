@@ -3,6 +3,8 @@ package id.my.hendisantika.contactapp.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,6 +43,8 @@ public class Contact {
     private String title;
     private String phone;
     private String address;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private String photoUrl;
 }
