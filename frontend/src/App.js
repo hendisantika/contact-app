@@ -27,5 +27,8 @@ function App() {
         }
     };
 
+    const onChange = (event) => {
+        setValues({...values, [event.target.name]: event.target.value});
+    };
 
     export default App;
