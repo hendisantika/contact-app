@@ -1,8 +1,12 @@
 package id.my.hendisantika.contactapp.service;
 
+import id.my.hendisantika.contactapp.entity.Contact;
 import id.my.hendisantika.contactapp.repository.ContactRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,4 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ContactService {
     private final ContactRepository contactRepository;
+
+    public Page<Contact> getAllContacts(int page, int size) {
+        return contactRepository.findAll(PageRequest.of(page, size, Sort.by("name")));
+    }
 }
