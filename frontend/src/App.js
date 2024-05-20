@@ -57,4 +57,14 @@ function App() {
         }
     };
 
+    const updateContact = async (contact) => {
+        try {
+            const {data} = await saveContact(contact);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+            toastError(error.message);
+        }
+    };
+
     export default App;
