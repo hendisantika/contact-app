@@ -1,15 +1,25 @@
 services:
-  image: postgres:16-alpine
-  ports:
-    - "5433:5432"
-  networks:
-    - backend
-  environment:
-    - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=S3cret
-    - POSTGRES_DB=contactDB
-  healthcheck:
-    test: [ "CMD-SHELL", "pg_isready -U postgres" ]
-    interval: 10s
-    timeout: 5s
-    retries: 5
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5433:5432"
+    expose:
+      - 5432
+    #    networks:
+    #      - contact-app
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=S3cret
+      - POSTGRES_DB=contactDB
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+
+#  volumes:
+#    db-data:
+#  networks:
+#    contact-app:
