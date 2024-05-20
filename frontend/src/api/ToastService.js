@@ -10,3 +10,7 @@ const toastConfig = {
     progress: undefined,
     theme: "light"
 };
+
+export function toastInfo(message) {
+    toast.info(message, toastConfig);
+}
