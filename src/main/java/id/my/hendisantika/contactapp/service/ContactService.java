@@ -34,4 +34,9 @@ public class ContactService {
     public Contact getContact(String id) {
         return contactRepository.findById(id).orElseThrow(() -> new RuntimeException("Contact not found"));
     }
+
+    public Contact createContact(Contact contact) {
+        return contactRepository.save(contact);
+    }
+
 }
