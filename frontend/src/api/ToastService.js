@@ -14,3 +14,7 @@ const toastConfig = {
 export function toastInfo(message) {
     toast.info(message, toastConfig);
 }
+
+export function toastSuccess(message) {
+    toast.success(message, toastConfig);
+}
