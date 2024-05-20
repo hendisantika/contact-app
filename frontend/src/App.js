@@ -67,4 +67,13 @@ function App() {
         }
     };
 
+    const updateImage = async (formData) => {
+        try {
+            const {data: photoUrl} = await udpatePhoto(formData);
+        } catch (error) {
+            console.log(error);
+            toastError(error.message);
+        }
+    };
+
     export default App;
