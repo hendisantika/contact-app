@@ -30,4 +30,8 @@ public class ContactService {
     public Page<Contact> getAllContacts(int page, int size) {
         return contactRepository.findAll(PageRequest.of(page, size, Sort.by("name")));
     }
+
+    public Contact getContact(String id) {
+        return contactRepository.findById(id).orElseThrow(() -> new RuntimeException("Contact not found"));
+    }
 }
