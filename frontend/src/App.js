@@ -15,4 +15,17 @@ function App() {
         status: '',
     });
 
-export default App;
+    const getAllContacts = async (page = 0, size = 10) => {
+        try {
+            setCurrentPage(page);
+            const {data} = await getContacts(page, size);
+            setData(data);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+            toastError(error.message);
+        }
+    };
+
+
+    export default App;
