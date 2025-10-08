@@ -9,7 +9,7 @@
     "axios": "^1.12.2",
     "react-dom": "^19.2.0",
     "react": "^19.0.0",
-    "react-router-dom": "^7.9.3",
+    "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "react-toastify": "^11.0.5",
     "web-vitals": "^5.1.0"
