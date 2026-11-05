@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,7 +33,7 @@ public class BoostrapInitialData implements CommandLineRunner {
     public void run(String... args) {
         for (int i = 0; i < 50; i++) {
             log.info("Add new Data ....");
-            contactRepository.save(new Contact(UUID.randomUUID().toString(), faker.name().fullName(), faker.internet().emailAddress(),
+            contactRepository.save(new Contact(null, faker.name().fullName(), faker.internet().emailAddress(),
                     faker.name().title(), faker.phoneNumber().cellPhone(), faker.address().fullAddress(), Status.values()[new Random().nextInt(Status.values().length)], faker.avatar().image()));
         }
     }
